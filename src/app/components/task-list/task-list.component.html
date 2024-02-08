@@ -1,1 +1,5 @@
-<p>task-list works!</p>
+@for (task of [1, 2, 3]; track task) {
+    {{task}}
+} @empty {
+    <p>Não há tarefas cadastradas.</p>
+}

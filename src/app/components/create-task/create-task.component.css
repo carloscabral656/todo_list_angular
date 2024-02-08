@@ -1,0 +1,15 @@
+:host{
+
+    .container-create-task{
+        width: 50%;
+    }
+
+    .task_component_menu{
+        display: flex;
+        flex-direction: column;
+    }
+
+    .task_title_menu{
+        
+    }
+}

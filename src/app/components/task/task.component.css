@@ -1,0 +1,7 @@
+.task_component{
+    margin: 10px 0;
+    padding: 10px;
+    width: 50%;
+    border: 1px solid #000;
+    border-radius: 10px;
+}

@@ -1,0 +1,23 @@
+<div class="container-create-task">
+    <div class="task_component_menu task_title_menu">
+        <label for="task_title">Task Title</label>
+        <input #title id="task_title" type="text">
+    </div>
+
+    <div class="task_component_menu task_title_duration">
+        <label for="task_duration">Task Duration</label>
+        <input #duration id="task_duration" type="number">
+    </div>
+
+    <div class="task_component_menu task_title_description">
+        <label for="task_description">Task Description</label>
+        <textarea #description id="task_description" name=""cols="30" rows="10"></textarea>
+    </div>
+
+    <button (click)="createTask({
+        id: '14T',
+        title: title.value,
+        duration: duration.value,
+        description: description.value
+    })">Criar Task</button>
+</div>
