@@ -1,5 +1,5 @@
-@for (task of [1, 2, 3]; track task) {
-    {{task}}
+@for (task of taskService.getAllTasks(); track task) {
+    <app-task [task]="task"></app-task>
 } @empty {
     <p>Não há tarefas cadastradas.</p>
 }

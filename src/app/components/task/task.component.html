@@ -1,7 +1,7 @@
 <div class="task_component">
-    <h2 class="class_title">{{task.title}}</h2>
+    <h2 class="class_title">{{task.id}} - {{task.title}}</h2>
     <p>Duration: {{task.duration}}</p>
-    <p name="" id="" cols="30" rows="10">
-        {{task.description}}
-    </p>
+    <textarea [(ngModel)]="task.description" name="" id="" cols="30" rows="10">{{task.description}}</textarea>
+    <button (click)="updateTask()">Edit</button>
+    <button (click)="deleteTask()">Delete</button>
 </div>

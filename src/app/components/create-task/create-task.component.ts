@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
 import { TaskService } from '../../services/tasks/task-service.service';
+import { FormsModule, NgModel } from '@angular/forms';
 import { Task } from '../../entities/task';
-import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-create-task',
   standalone: true,
-  imports: [],
+  imports: [FormsModule],
   templateUrl: './create-task.component.html',
   styleUrl: './create-task.component.css'
 })
@@ -14,10 +14,11 @@ export class CreateTaskComponent {
 
   constructor(
     private taskService: TaskService,
-    private httpClient: HttpClient
-  ){}
+    public task?: Task,
+  ) {}
 
-  public createTask(task: Task){
-    this.taskService.add(task);
+  public createTask(){
+    if(this.task)
+      this.taskService.createTask(this.task);
   }
 }

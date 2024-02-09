@@ -16,18 +16,51 @@ export class TaskService {
     this.apiUrl = "http://localhost:3000";
   }
 
-  public add(task: Task) {
-    this.tasks.push(task);
+  public getAllTasks(): Task[]{
+    return this.tasks;
   }
 
-  public getAllTasksFromServer(): void {
-    this
+  public getAllTasksFromServer(){
+    let tasks = this
       .http
-      .get(`${this.apiUrl}/tasks`)
-      .subscribe(res => console.log(res));
+      .get<Task[]>(`${this.apiUrl}/tasks`)
+      .subscribe((tasks: Task[]) => {
+        this.tasks = tasks
+      });
   }
 
   public fillTasks(res: any){
-
+    res.foreach((r: any) => {
+      this.tasks.push(r);
+    });
   }
+
+  public createTask(task: Task){
+    let tasks = this
+    .http
+    .post<Task>(`${this.apiUrl}/tasks`, task)
+    .subscribe(() => {
+      this.getAllTasksFromServer();
+    });
+  }
+
+  public updateTask(task: Task){
+    let updatedTask = this
+    .http
+    .put<Task>(`${this.apiUrl}/tasks/${task.id}`, task)
+    .subscribe(() => {
+      this.getAllTasksFromServer()
+    });
+    return updatedTask;
+  }
+
+  public deleteTask(task: Task){
+    let deleted = this
+    .http
+    .delete<Task>(`${this.apiUrl}/tasks/${task.id}`)
+    .subscribe(() => {
+      this.getAllTasksFromServer();
+    });
+  }
+
 }
